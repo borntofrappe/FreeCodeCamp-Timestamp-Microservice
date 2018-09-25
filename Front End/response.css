@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Oswald:300');
+
+:root {
+  /* include variables for the project */
+  --color-text: #000;
+  --color-background: #fff;
+  --color-accent: #f4511e;
+  --font-text: 'Open Sans', sans-serif;
+  --font-header: 'Oswald', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-text);
+  color: var(--color-text);
+  background: var(--color-background);
+}
+/* center all elements in the page, one on top of the other */
+.timestamp {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.timestamp__visuals {
+  /* position relative to absolute position the input elements relative to this container (and on top of the only other element, the heading) */
+  position: relative;
+}
+.timestamp__visuals h1 {
+  font-family: var(--font-header);
+  text-transform: uppercase;
+  font-size: calc(4rem + 1vw);
+  letter-spacing: calc(0.4rem + 1vw);
+}
+
+/* absolute position the paragraph on top of the heading */
+.timestamp__visuals p {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  background: var(--color-background);
+  color: var(--color-accent);
+  font-weight: bold;
+  text-align: center;
+  padding: 0.25rem 0;
+  font-size: 1rem;
+  text-align: center;
+}

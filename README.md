@@ -39,3 +39,9 @@ A GET request, sent to the particular URL, ought to return a timestamp for the s
 ## Design
 
 The design of the application is detailed in [this project](https://github.com/borntofrappe/Practice-Front-End-Web-Development/tree/master/Front-End%20Timestamp).
+
+## Node
+
+Even if this is not the first project I created using Node, it is nevertheless the first project for the @freecodecamp curriculum. It is therefore helpful to jot down a few notes on the development of the back-end application.
+
+For starters, the pages to be rendered are included in their `html` version in the `Front End` folder. `index.html` needs to be rendered in the root path, while `response.html` is the version which needs to be rendered when the query string is included, with the information passed in the query string.
