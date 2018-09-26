@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Oswald:300');
+
+:root {
+  /* include variables for the project */
+  --color-text: #000;
+  --color-background: #fff;
+  --color-accent: #f4511e;
+  --font-text: 'Open Sans', sans-serif;
+  --font-header: 'Oswald', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-text);
+  color: var(--color-text);
+  background: var(--color-background);
+}
+/* center all elements in the page, one on top of the other */
+.timestamp {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.timestamp__visuals {
+  /* position relative to absolute position the input elements relative to this container (and on top of the only other element, the heading) */
+  position: relative;
+}
+.timestamp__visuals h1 {
+  font-family: var(--font-header);
+  text-transform: uppercase;
+  font-size: calc(4rem + 1vw);
+  letter-spacing: calc(0.4rem + 1vw);
+}
+
+.visuals--inputs {
+  /* absolute position the input elements on top of the heading */
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  /* padding to allow for space around the input elements (filled with a line through a pseudo element) */
+  padding: 0 2.5rem;
+  /* stretch the input elements to occupy the entirety of the parents width  */
+  width: 100%;
+  /* specify a solid background, which generates the strip on top of the heading */
+  background: var(--color-background);
+  /* lay the input elements side by side */
+  display: flex;
+}
+
+/* through a pseudo element, centered horizontally, include a line _beneath_ the inputs' container */
+.visuals--inputs:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+  background: var(--color-accent);
+  /* z-index to avoid the default behavior of having the pseudo element _atop_ the connected element */
+  z-index: -100;
+}
+
+.visuals--inputs input {
+  /* have the input elements occupy each a fraction of the container */
+  flex-grow: 1;
+  /*
+  width set to 0 to let the flex-grow property actually divide the container in equal parts
+  otherwise the actual size of the flex items influences a larger area for the larger element (the input element for the year value)
+  */
+  width: 0;
+  /* remove default styling and add own styling */
+  background: var(--color-background);
+  border: none;
+  padding: 0 1rem;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  color: var(--color-accent);
+}
+
+button.timestamp__request {
+  background: var(--color-accent);
+  color: var(--color-background);
+  border: none;
+  padding: 0.5rem 0.8rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: inherit;
+  letter-spacing: 0.1rem;
+  word-spacing: 0.2rem;
+  margin: 1rem 0 2rem;
+  box-shadow: 0 1px 10px var(--color-accent);
+  /* transition for the hover and active state */
+  transition: all 0.1s ease-out;
+}
+/* on hover flip the color and background values */
+button.timestamp__request:hover {
+  color: var(--color-accent);
+  background: var(--color-background);
+}
+/* when active reduce the box shadow and slightly push the button downward */
+button.timestamp__request:active {
+  transform: translateY(5px);
+  box-shadow: 0 1px 0px var(--color-accent);
+}
+
+/* by default hide the heading displaying the time stamp, to have it visualized as the request is "processed" */
+.timestamp__stamp {
+  visibility: none;
+  opacity: 0;
+  text-align: center;
+  font-weight: 300;
+  /* transition for a slighter smoother change in opacity */
+  transition: opacity 0.2s ease-out;
+}
+
+/* absolute position the helper button in the top right corner of the application */
+button.timestamp__helper {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 4px solid var(--color-text);
+  background: none;
+  opacity: 0.3;
+  /* transition for hover and active states */
+  transition: all 0.2s ease-out;
+}
+/* on hover increase the opacity of the button and nested icon */
+button.timestamp__helper:hover {
+  opacity: 0.5;
+}
+/* when active slightly rescale the button */
+button.timestamp__helper:active {
+  transform: scale(1.05);
+}
+button.timestamp__helper svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--color-text);
+  /* remove pointer events to have a click on the svg register as a click on the button */
+  pointer-events: none;
+}
+
+/* absolute position the helper container, and impose it on top of the application */
+div.timestamp__helper {
+  position: absolute;
+  background: var(--color-background);
+  width: 90vw;
+  top: 1rem;
+  max-width: 800px;
+  padding: 1.5rem 1rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 0px 15px -5px var(--color-text);
+  line-height: 2;
+  transition: all 0.3s ease-out;
+}
+/* remove pointer events on all children of the helper container, to a click anywhere in the container register the container itself as the target */
+div.timestamp__helper > * {
+  pointer-events: none;
+}
+/* by default hide the div, and toggle its opacity through the helper button */
+div.hidden {
+  transform: translateY(-20vh);
+  visibility: hidden;
+  opacity: 0;
+}
+div.timestamp__helper div.helper--query {
+  margin: 1.5rem 0;
+  padding: 0 1rem;
+}
+div.timestamp__helper h2 {
+  text-transform: capitalize;
+  font-weight: 300;
+  /* position relative to absolute position a dot to the left of each heading, through a pseudo element */
+  position: relative;
+}
+div.timestamp__helper h2:before {
+  position: absolute;
+  content: '';
+  background: var(--color-accent);
+  top: 50%;
+  left: -0.75rem;
+  transform: translate(0, -50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+div.timestamp__helper p {
+  margin: 0.5rem 0;
+}
+div.timestamp__helper span {
+  color: var(--color-accent);
+  font-weight: bold;
+}
+div.timestamp__helper code {
+  margin: 0.5rem 0;
+  padding: 0.25rem 0.5rem;
+  border-left: 4px solid var(--color-accent);
+}
+
+
+/* on smaller viewports, to avoid overlap of the helper container on the helper button, increase the gap of the container from the top */
+@media (max-width: 850px) {
+  div.timestamp__helper {
+    top: 5rem;
+  }
+}

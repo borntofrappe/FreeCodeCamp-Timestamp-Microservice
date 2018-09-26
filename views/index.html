@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+
+  <title>Timestamp Service</title>
+  <meta name="description" content="Create a timestamp service, providing a timestamp at a specific endpoint."/>
+
+  <link rel="stylesheet" href="style.css"/>
+  <!-- <link rel="icon" href="tab_icon.png"> -->
+
+</head>
+
+<body>
+  <!-- SVG SET -->
+  <svg style="display: none;">
+    <symbol id="helper" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 26.458 26.458"><g style="line-height:1.25;-inkscape-font-specification:Roboto"><path d="M7.673 4.767q.505-.441 1.092-.826.6-.384 1.283-.669.683-.299 1.461-.455.792-.171 1.707-.171 1.283 0 2.307.356 1.037.356 1.76 1.025.724.654 1.107 1.594.395.925.395 2.064 0 1.096-.286 1.879-.287.783-.737 1.366-.437.584-.97 1.011-.518.413-.996.783-.464.37-.82.726-.34.356-.423.797l-.382 1.993h-2.894l-.3-2.292-.028-.17v-.172q0-.626.287-1.096.287-.47.724-.854.436-.398.942-.754.505-.37.941-.783.437-.427.724-.94.287-.526.287-1.238 0-.854-.546-1.352-.533-.513-1.475-.513-.723 0-1.215.157-.478.157-.832.356-.342.185-.601.341-.26.157-.519.157-.587 0-.874-.527zm2.512 16.611q0-.512.177-.953.191-.442.505-.769.328-.327.765-.512.437-.2.956-.2.505 0 .942.2.436.185.764.512t.505.769q.191.441.191.953 0 .513-.19.968-.178.442-.506.769t-.764.512q-.437.186-.942.186-.52 0-.956-.186-.437-.185-.765-.512-.314-.327-.505-.769-.177-.455-.177-.968z" style="-inkscape-font-specification:'Lato Heavy'" font-weight="900" font-family="Lato" aria-label="?" font-size="27.88" letter-spacing="0" word-spacing="0" stroke-width=".697"/></g></symbol>
+  </svg>
+
+  <!-- ACTUAL PAGE -->
+  <!-- in a wrapping container include a heading and multiple input elements (these are placed on top of the header itself) -->
+  <div class="timestamp">
+
+    <!-- in the visuals include a heading and multiple input elements -->
+    <div class="timestamp__visuals">
+      <h1>Timestamp</h1>
+      <!-- the input elements are wrapped in a div, which is placed on top of the heading -->
+      <div class="visuals--inputs">
+        <input type="number" id="day" value="1" min="1" max="31" />
+        <input type="number" id="month" value="1" min="1" max="12" />
+        <input type="number" id="year" value="2018" />
+      </div>
+    </div>
+
+    <!-- include a button elements to retrieve the time stamp (request fulilled in the backend project) -->
+    <button class="timestamp__request">Sample Request</button>
+    <!-- include a heading in which to visualize the time stamp (include some default text to have the heading occupy some space by default) -->
+    <h2 class="timestamp__stamp">Timestamp here</h2>
+
+    <!-- include a helper button through the SVG icon -->
+    <button class="timestamp__helper">
+      <svg>
+        <use href="#helper"/>
+      </svg>
+    </button>
+
+    <!-- describe in a helper container the instructions highlighted as the user clicks on the helper button -->
+    <div class="timestamp__helper hidden">
+      <!-- wrap each section in a container, to allow for uniform spacing -->
+      <div class="helper--query">
+        <h2>What is
+          <span>
+            this
+          </span>
+          ?
+        </h2>
+        <p>This is a simple back-end application providing a
+          <span class="highlight">
+            timestamp service
+          </span>.
+        </p>
+      </div>
+
+      <div class="helper--query">
+        <h2>What does
+          <span class="highlight">
+            that
+          </span>
+          mean?
+        </h2>
+        <p>It means you can ping the server at the following endpoint:</p>
+        <code>[project_url]/api/timestamp/?date</code>
+        <p>And have it return a timestamp matching the selected date.</p>
+      </div>
+
+      <div class="helper--query">
+        <h2>How does
+          <span class="highlight">
+            that
+          </span>
+          look?
+        </h2>
+
+        <p>Sample request:</p>
+        <code>[project_url]/api/timestamp/1479663089000</code>
+        <p>Sample response:</p>
+        <code>{"unix": 1479663089000 ,"utc": "Sun, 20 Nov 2016 17:31:29 GMT"}</code>
+      </div>
+
+      <div class="helper--query">
+        <h2>What about the
+          <span class="highlight">
+            button
+          </span>
+          ?
+        </h2>
+        <p>We like a UI even for back-end projects, no matter how simple.
+          <br>
+          The button displays a sample request for date detailed in the input elements.
+        </p>
+      </div>
+
+    </div>
+
+
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
