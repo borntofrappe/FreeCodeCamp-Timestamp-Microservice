@@ -111,4 +111,3 @@ The logic of the script is rather straightforward:
     ```
 
     For the timestamp matching the date string specified through a request paramater (in the form of `path/:request-param)` the structure is eerily similar, but the date object is used in conjunction with the value retrieved from the path itself.
-
