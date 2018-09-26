@@ -20,7 +20,7 @@ A **GET** request, sent to the particular URL, ought to return a timestamp for t
   {"unix": <date.getTime()>, "utc" : <date.toUTCString()> }
   ```
 
-  For instance, for a date string detailing the number of milliseconds as follows `[project_url]/api/timestamp/1479663089000?`, the object will respons with the following message:
+  For instance, for a date string detailing the number of milliseconds as follows `[project_url]/api/timestamp/1479663089000`, the object will respons with the following message:
 
   ```JSON
   {"unix": 1479663089000 ,"utc": "Sun, 20 Nov 2016 17:31:29 GMT"}
@@ -53,9 +53,3 @@ With a bit of planning, the application is redesigned with the following conside
 - the button providing an example request ought to simply display a sample of the actual response provided by the server in the specific route (without changing the route of the application). Its text ought to change to therefore match this purpose.
 
 - when pinging the server at the particular route, the application ought to return the JSON object describing the three possible cases. Only the JSON object ought to be returned.
-
-## Node
-
-Even if this is not the first project I created using Node, it is nevertheless the first project for the @freecodecamp curriculum. It is therefore helpful to jot down a few notes on the development of the back-end application.
-
-For starters, the pages to be rendered are included in their `html` version in the `Front End` folder. `index.html` needs to be rendered in the root path, while `response.html` is the version which needs to be rendered when the query string is included, with the information passed in the query string.
