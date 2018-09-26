@@ -48,49 +48,60 @@
 
     <!-- describe in a helper container the instructions highlighted as the user clicks on the helper button -->
     <div class="timestamp__helper hidden">
-      <h2>What is
-        <span>
-          this
-        </span>
-        ?
-      </h2>
-      <p>This is a simple back-end application providing a
-        <span class="highlight">
-          timestamp service
-        </span>.
-      </p>
+      <!-- wrap each section in a container, to allow for uniform spacing -->
+      <div class="helper--query">
+        <h2>What is
+          <span>
+            this
+          </span>
+          ?
+        </h2>
+        <p>This is a simple back-end application providing a
+          <span class="highlight">
+            timestamp service
+          </span>.
+        </p>
+      </div>
 
-      <h2>What does
-        <span class="highlight">
-          that
-        </span>
-        mean?
-      </h2>
-      <p>It means you can ping the server at the following endpoint:</p>
-      <code>[project_url]/api/timestamp/?date</code>
-      <p>And have it return a timestamp matching the selected date.</p>
+      <div class="helper--query">
+        <h2>What does
+          <span class="highlight">
+            that
+          </span>
+          mean?
+        </h2>
+        <p>It means you can ping the server at the following endpoint:</p>
+        <code>[project_url]/api/timestamp/?date</code>
+        <p>And have it return a timestamp matching the selected date.</p>
+      </div>
 
-      <h2>How does
-        <span class="highlight">
-          that
-        </span>
-        look?
-      </h2>
+      <div class="helper--query">
+        <h2>How does
+          <span class="highlight">
+            that
+          </span>
+          look?
+        </h2>
 
-      <p>Sample request:</p>
-      <code>[project_url]/api/timestamp/1479663089000</code>
-      <p>Sample response:</p>
-      <code>{"unix": 1479663089000 ,"utc": "Sun, 20 Nov 2016 17:31:29 GMT"}</code>
+        <p>Sample request:</p>
+        <code>[project_url]/api/timestamp/1479663089000</code>
+        <p>Sample response:</p>
+        <code>{"unix": 1479663089000 ,"utc": "Sun, 20 Nov 2016 17:31:29 GMT"}</code>
+      </div>
 
-      <h2>What about the
-        <span class="highlight">
-          button
-        </span>
-        ?
-      </h2>
-      <p>We like a UI even for back-end projects, no matter how simple.
-        <br>
-        The button displays a sample request for date detailed in the input elements.</p>
+      <div class="helper--query">
+        <h2>What about the
+          <span class="highlight">
+            button
+          </span>
+          ?
+        </h2>
+        <p>We like a UI even for back-end projects, no matter how simple.
+          <br>
+          The button displays a sample request for date detailed in the input elements.
+        </p>
+      </div>
+
     </div>
 
 

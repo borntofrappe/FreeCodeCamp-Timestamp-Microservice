@@ -165,7 +165,7 @@ div.timestamp__helper {
   padding: 1.5rem 1rem;
   margin-bottom: 2rem;
   box-shadow: 0 0px 15px -5px var(--color-text);
-  line-height: 2.5;
+  line-height: 2;
   transition: all 0.3s ease-out;
 }
 /* remove pointer events on all children of the helper container, to a click anywhere in the container register the container itself as the target */
@@ -178,18 +178,36 @@ div.hidden {
   visibility: hidden;
   opacity: 0;
 }
+div.timestamp__helper div.helper--query {
+  margin: 1.5rem 0;
+  padding: 0 1rem;
+}
 div.timestamp__helper h2 {
   text-transform: capitalize;
   font-weight: 300;
+  /* position relative to absolute position a dot to the left of each heading, through a pseudo element */
+  position: relative;
+}
+div.timestamp__helper h2:before {
+  position: absolute;
+  content: '';
+  background: var(--color-accent);
+  top: 50%;
+  left: -0.75rem;
+  transform: translate(0, -50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
 }
 div.timestamp__helper p {
-  margin: 0.5rem 0 0.75rem;
+  margin: 0.5rem 0;
 }
 div.timestamp__helper span {
   color: var(--color-accent);
   font-weight: bold;
 }
 div.timestamp__helper code {
+  margin: 0.5rem 0;
   padding: 0.25rem 0.5rem;
   border-left: 4px solid var(--color-accent);
 }
