@@ -53,3 +53,62 @@ With a bit of planning, the application is redesigned with the following conside
 - the button providing an example request ought to simply display a sample of the actual response provided by the server in the specific route (without changing the route of the application). Its text ought to change to therefore match this purpose.
 
 - when pinging the server at the particular route, the application ought to return the JSON object describing the three possible cases. Only the JSON object ought to be returned.
+
+## Node
+
+This is not the first project I created to practice with Node, Express and related logic, but it is the first effort for the @freecodecamp curriculum. I therefore decided to jot down a few notes on the development of the application.
+
+### Setup
+
+The application as developed on the front-end side is included in two folders, **public** and **views**:
+
+- in the first folder, static files like the stylesheet `style.css` and the script file `script.js` are included. In the script working with the express package, such files will be served through the `app.use()` function.
+
+- in the second folder, `index.html` is served. This will be used as the filder rendered in the root folder, through the `sendFile()` method.
+
+Interestingly enough, serving a JavaScript file and referencing it from the HTML document follows the same logic applied for the CSS stylesheet.
+
+### Express
+
+The routing and most of all functionality of the application is handled through the `express` package.
+
+The logic of the script is rather straightforward:
+
+1. set up an express app:
+
+    ```JS
+    const express = require('express');
+    const app = express();
+    ```
+
+1. serve static files referencing the route in which they are included:
+
+    ```JS
+    app.use(express.static(`${__dirname}/public`));
+    ```
+
+1. serve the HTML file in the route folder:
+
+    ```JS
+    app.get('/', function(req, res) {
+      res.sendFile(`${__dirname}/views/index.html`);
+    });
+    ```
+
+1. handle the API endpoint by sending JSON objects with the desired timestamp.
+
+    For the current timestamp:
+
+    ```JS
+    app.get('/api/timestamp', function(req, res) {
+      let date = new Date();
+
+      res.json({
+        "unix": date.getTime(),
+        "utc": date.toUTCString()
+      });
+    });
+    ```
+
+    For the timestamp matching the date string specified through a request paramater (in the form of `path/:request-param)` the structure is eerily similar, but the date object is used in conjunction with the value retrieved from the path itself.
+
